@@ -11,8 +11,15 @@ def index_get():
 @app.post("/predict")
 def predict():
     text = request.get_json().get("message")
-    response = get_response(text)
+    learn, response = get_response(text)
     message = {"answer": response}
+
+    if(learn == 1) {
+        # training
+        #1 get - request
+        #2 use training
+        #3 respone
+    }
 
     return jsonify(message)
 
