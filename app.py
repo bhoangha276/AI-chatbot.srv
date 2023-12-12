@@ -1,6 +1,23 @@
 from flask import Flask, render_template, request, jsonify
+from pathlib import Path
 
 from prepared.chat import get_response
+from prepared.training import train_artificial_intelligence
+
+
+
+def init_data_training():
+    try:
+        path = 'prepared/data.pth'
+        exist_file = Path(path).exists()
+        if not exist_file:
+            train_artificial_intelligence()
+            print('Bot initialized successfully!')
+        
+    except Exception as error:
+        return error
+
+
 
 app = Flask(__name__)
 
@@ -14,7 +31,7 @@ def predict():
     learn, response = get_response(text)
     message = {"answer": response}
 
-    # if(learn == 1):
+    # if learn == 1:
         # training
         #1 get - request
         #2 use training
@@ -23,5 +40,6 @@ def predict():
     return jsonify(message)
 
 if __name__ == "__main__":
+    init_data_training()
     app.run(debug=True, port=8008)
 
