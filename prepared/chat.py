@@ -6,7 +6,7 @@ import torch
 from prepared.model import NeuralNet
 from prepared.nltk_utils import bag_of_words, tokenize
 
-bot_name = "HaJun"
+bot_name = "Junet"
 request_name = "name"
 response_exception = "Tôi không biết điều này. Bạn có thể dạy không?"
 
