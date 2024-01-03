@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 from pathlib import Path
 
 from prepared.chat import get_response
@@ -20,6 +21,7 @@ def init_data_training():
 
 
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
 
 @app.get("/")
 def index_get():
